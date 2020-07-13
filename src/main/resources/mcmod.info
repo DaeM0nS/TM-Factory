@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "tmfactory",
+        "name": "TM-Factory",
+        "description": "Sponge plugin for creating custom TMs, TRs, and HMs for Pixelmon Generations",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": ["Lypaka"],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }
+]
