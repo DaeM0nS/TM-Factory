@@ -1,9 +1,13 @@
 package com.lypaka.tmfactory.Utils;
 
 import com.lypaka.tmfactory.Config.ConfigManager;
-import com.pixelmongenerations.common.battle.attacks.Attack;
+import com.pixelmonmod.pixelmon.battles.attacks.Attack;
+import com.pixelmonmod.pixelmon.enums.EnumType;
+import com.pixelmonmod.pixelmon.items.ItemTM;
+
+/*import com.pixelmongenerations.common.battle.attacks.Attack;
 import com.pixelmongenerations.common.item.ItemTM;
-import com.pixelmongenerations.core.enums.EnumType;
+import com.pixelmongenerations.core.enums.EnumType;*/
 import ninja.leaping.configurate.ConfigurationNode;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.player.Player;
@@ -21,7 +25,7 @@ public class ItemCreator {
         config = ConfigManager.getConfigFile(2);
         String move = attack.replace("[", "").replace("]", "");
         if (getConfigString(config.getNode("HMs")).contains(move)) {
-            EnumType type = Attack.getAttackBase(attack.replace("[", "").replace("]", "")).get().attackType;
+            EnumType type = new Attack(attack.replace("[", "").replace("]", "")).getType();;
             int number = config.getNode("HMs", move, "Number").getInt();
             ItemStack disc;
             if (number < 10) {
@@ -192,6 +196,15 @@ public class ItemCreator {
                     player.getInventory().offer(disc);
                     break;
                 }
+			case Mystery:{
+                net.minecraft.item.ItemStack is = new net.minecraft.item.ItemStack(ItemTM.getByNameOrId("pixelmon:tm58"));
+                disc = ItemStack.builder()
+                        .from(ItemStackUtil.fromNative(is))
+                        .add(Keys.DISPLAY_NAME, Text.of(TextColors.WHITE, itemName))
+                        .build();
+                player.getInventory().offer(disc);
+                break;
+            }
             }
         }
     }
@@ -200,7 +213,7 @@ public class ItemCreator {
         config = ConfigManager.getConfigFile(0);
         String move = attack.replace("[", "").replace("]", "");
         if (getConfigString(config.getNode("TMs")).contains(move)) {
-            EnumType type = Attack.getAttackBase(attack.replace("[", "").replace("]", "")).get().attackType;
+            EnumType type = new Attack(attack.replace("[", "").replace("]", "")).getType();
             int number = config.getNode("TMs", move, "Number").getInt();
             ItemStack disc;
             if (number < 10) {
@@ -371,6 +384,15 @@ public class ItemCreator {
                     player.getInventory().offer(disc);
                     break;
                 }
+    			case Mystery:{
+                    net.minecraft.item.ItemStack is = new net.minecraft.item.ItemStack(ItemTM.getByNameOrId("pixelmon:tm58"));
+                    disc = ItemStack.builder()
+                            .from(ItemStackUtil.fromNative(is))
+                            .add(Keys.DISPLAY_NAME, Text.of(TextColors.WHITE, itemName))
+                            .build();
+                    player.getInventory().offer(disc);
+                    break;
+                }
             }
         }
     }
@@ -380,7 +402,7 @@ public class ItemCreator {
         String move = attack.replace("[", "").replace("]", "");
         //if (config.getNode("TRs").getString().contains(move)) {
         if (getConfigString(config.getNode("TRs")).contains(move)) {
-            EnumType type = Attack.getAttackBase(attack.replace("[", "").replace("]", "")).get().attackType;
+            EnumType type = new Attack(attack.replace("[", "").replace("]", "")).getType();
             int number = config.getNode("TRs", move, "Number").getInt();
             if (number < 10) {
                 itemName = "TR0" + number + ": " + move;
@@ -551,6 +573,15 @@ public class ItemCreator {
                     player.getInventory().offer(disc);
                     break;
                 }
+			case Mystery:{
+                net.minecraft.item.ItemStack is = new net.minecraft.item.ItemStack(ItemTM.getByNameOrId("pixelmon:tm58"));
+                disc = ItemStack.builder()
+                        .from(ItemStackUtil.fromNative(is))
+                        .add(Keys.DISPLAY_NAME, Text.of(TextColors.WHITE, itemName))
+                        .build();
+                player.getInventory().offer(disc);
+                break;
+            }
             }
         }
     }

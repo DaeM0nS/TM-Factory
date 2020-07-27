@@ -3,8 +3,10 @@ package com.lypaka.tmfactory.Commands;
 import com.lypaka.tmfactory.Config.ConfigManager;
 import com.lypaka.tmfactory.TMFactory;
 import com.lypaka.tmfactory.Utils.ItemCreator;
-import com.pixelmongenerations.common.battle.attacks.Attack;
+import com.pixelmonmod.pixelmon.battles.attacks.Attack;
+
 import ninja.leaping.configurate.ConfigurationNode;
+
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.args.GenericArguments;
@@ -33,7 +35,8 @@ public class AdminCommands {
 
                     if (Attack.hasAttack(move)) {
                         if (config.getNode("TMs", move).isVirtual()) {
-                            String moveType = Attack.getAttackBase(move).get().attackType.getName();
+                            String moveType = new Attack(move).getType().getName();
+                            //getAttackBase(move).get().attackType.getName();
                             config.getNode("TMs", move, "Type").setValue(moveType);
 
                             config.getNode("TMs", move, "Number").setValue(num);
@@ -66,7 +69,7 @@ public class AdminCommands {
 
                     if (Attack.hasAttack(move)) {
                         if (config.getNode("TRs", move).isVirtual()) {
-                            String moveType = Attack.getAttackBase(move).get().attackType.getName();
+                            String moveType = new Attack(move).getType().getName();
                             config.getNode("TRs", move, "Type").setValue(moveType);
 
                             config.getNode("TRs", move, "Number").setValue(num);
@@ -96,7 +99,7 @@ public class AdminCommands {
 
                     if (Attack.hasAttack(move)) {
                         if (config.getNode("HMs", move).isVirtual()) {
-                            String moveType = Attack.getAttackBase(move).get().attackType.getName();
+                            String moveType = new Attack(move).getType().getName();
                             config.getNode("HMs", move, "Type").setValue(moveType);
 
                             config.getNode("HMs", move, "Number").setValue(num);
