@@ -61,7 +61,7 @@ public class ItemHandler {
                                 player.getItemInHand(HandTypes.MAIN_HAND).get().setQuantity(player.getItemInHand(HandTypes.MAIN_HAND).get().getQuantity() - 1);
                                 player.sendMessage(Text.of("Your Pokemon learned " + attack.getActualMove().getUnlocalizedName() + "!"));
                             } else {
-                                Pixelmon.network.sendTo(new OpenReplaceMoveScreen(pokemon.getUniqueID(), attack.getActualMove().getAttackId(), false), (EntityPlayerMP) player);
+                                Pixelmon.network.sendTo(new OpenReplaceMoveScreen(pokemon.func_184753_b(), attack.getActualMove().getAttackId(), false), (EntityPlayerMP) player);
                                 setPokemon(pokemon);
                                 setPlayer(player);
                                 setMove(attack.getActualMove().getUnlocalizedName());
@@ -82,7 +82,7 @@ public class ItemHandler {
                                 player.getItemInHand(HandTypes.MAIN_HAND).get().setQuantity(player.getItemInHand(HandTypes.MAIN_HAND).get().getQuantity() - 1);
                                 player.sendMessage(Text.of("Your Pokemon learned " + attack.getActualMove().getUnlocalizedName() + "!"));
                             } else {
-                                Pixelmon.network.sendTo(new OpenReplaceMoveScreen(pokemon.getUniqueID(), attack.getActualMove().getAttackId(), false), (EntityPlayerMP) player);
+                                Pixelmon.network.sendTo(new OpenReplaceMoveScreen(pokemon.func_184753_b(), attack.getActualMove().getAttackId(), false), (EntityPlayerMP) player);
                                 setPokemon(pokemon);
                                 setPlayer(player);
                                 setMove(attack.getActualMove().getUnlocalizedName());
@@ -101,7 +101,7 @@ public class ItemHandler {
                                 player.getItemInHand(HandTypes.MAIN_HAND).get().setQuantity(player.getItemInHand(HandTypes.MAIN_HAND).get().getQuantity() - 1);
                                 player.sendMessage(Text.of("Your Pokemon learned " + attack.getActualMove().getUnlocalizedName() + "!"));
                             } else {
-                                Pixelmon.network.sendTo(new OpenReplaceMoveScreen(pokemon.getUniqueID(), attack.getActualMove().getAttackId(), false), (EntityPlayerMP) player);
+                                Pixelmon.network.sendTo(new OpenReplaceMoveScreen(pokemon.func_184753_b(), attack.getActualMove().getAttackId(), false), (EntityPlayerMP) player);
                                 setPokemon(pokemon);
                                 setPlayer(player);
                                 setMove(attack.getActualMove().getUnlocalizedName());
@@ -144,7 +144,11 @@ public class ItemHandler {
     
     private boolean canLearnMove (EntityPixelmon pokemon, String move) {
         BaseStats p = Pixelmon.pokemonFactory.create(pokemon.getSpecies()).getBaseStats();
-        return p.getTutorMoves().toString().contains(move) || p.getTMHMMoves().toString().contains(move) || p.levelUpMoves.toString().contains(move) || p.getAllMoves().toString().contains(move) || p.eggMoves.toString().contains(move);
+        return p.getTutorMoves()!=null?p.getTutorMoves().toString().contains(move):"".contains(move) || 
+        		p.getTMHMMoves()!=null?p.getTMHMMoves().toString().contains(move):"".contains(move) || 
+        		p.levelUpMoves!=null?p.levelUpMoves.toString().contains(move):"".contains(move) || 
+        		p.getAllMoves()!=null?p.getAllMoves().toString().contains(move):"".contains(move) || 
+        		p.eggMoves!=null?p.eggMoves.toString().contains(move):"".contains(move);
 //        return moves.tutorMoves.toString().contains(move) || moves.tmTRMoves.toString().contains(move) || moves.levelMoves.toString().contains(move) || moves.evolutionMoves.toString().contains(move) || moves.eggMoves.toString().contains(move);
     }
 

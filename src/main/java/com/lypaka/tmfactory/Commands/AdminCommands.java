@@ -173,7 +173,7 @@ public class AdminCommands {
                 .child(giveTR, "givetr")
                 .child(makeTM, "maketm")
                 .child(makeTR, "maketr")
-                .child(makeHM, "createhm")
+                .child(makeHM, "makehm")
                 .executor((sender, context) -> {
 
                     Player player = (Player) sender;

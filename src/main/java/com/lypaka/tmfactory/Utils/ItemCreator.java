@@ -25,7 +25,7 @@ public class ItemCreator {
         config = ConfigManager.getConfigFile(2);
         String move = attack.replace("[", "").replace("]", "");
         if (getConfigString(config.getNode("HMs")).contains(move)) {
-            EnumType type = new Attack(attack.replace("[", "").replace("]", "")).getType();;
+            EnumType type = new Attack(move).getType();;
             int number = config.getNode("HMs", move, "Number").getInt();
             ItemStack disc;
             if (number < 10) {
@@ -213,7 +213,7 @@ public class ItemCreator {
         config = ConfigManager.getConfigFile(0);
         String move = attack.replace("[", "").replace("]", "");
         if (getConfigString(config.getNode("TMs")).contains(move)) {
-            EnumType type = new Attack(attack.replace("[", "").replace("]", "")).getType();
+            EnumType type = new Attack(move).getType();
             int number = config.getNode("TMs", move, "Number").getInt();
             ItemStack disc;
             if (number < 10) {
@@ -402,7 +402,7 @@ public class ItemCreator {
         String move = attack.replace("[", "").replace("]", "");
         //if (config.getNode("TRs").getString().contains(move)) {
         if (getConfigString(config.getNode("TRs")).contains(move)) {
-            EnumType type = new Attack(attack.replace("[", "").replace("]", "")).getType();
+            EnumType type = new Attack(move).getType();
             int number = config.getNode("TRs", move, "Number").getInt();
             if (number < 10) {
                 itemName = "TR0" + number + ": " + move;
